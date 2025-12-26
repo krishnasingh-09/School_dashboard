@@ -1,63 +1,151 @@
+# 🏫 School Management Dashboard
 
-# **School Management Dashboard**🚀
+A full-stack **role-based School Management System** built using **Next.js (App Router) + TypeScript + Prisma + PostgreSQL**, with authentication handled by **Clerk**, image uploads via **Cloudinary**, and interactive features like charts and calendar.
 
-🧠This School Management Dashboard is designed to streamline everyday school management tasks. It provides administrators, teachers, and students with an intuitive interface to access important information and manage day-to-day activities.
+This dashboard helps **Admins, Teachers, Students, and Parents** manage and view school-related data such as students, teachers, classes, attendance, exams, results, announcements, and events.
 
-##  🌟**Features**
+---
 
-- **User Authentication:** Secure login system for students, teachers, and admins.
-- **Dashboard:** Visual representation of school metrics.
-- **Student Management:** Enroll, update, and manage student records.
-- **Teacher Management:** Assign classes, manage schedules, and track performance.
-- **Class Scheduling:** Dynamic scheduling and calendar integration.
-- **Notifications:** Email and in-app notifications for upcoming events and deadlines.
-- **Responsive Design:** Mobile-first design ensuring smooth experience on all devices.
+## 🚀 Features
 
+### 🔐 Authentication & Roles
+- Secure authentication using **Clerk**
+- Role-based protected routes
+- Middleware-based access control
+- Role dashboards:
+  - Admin
+  - Teacher
+  - Student
+  - Parent
 
-## 📥Tech Stack
+### 🧑‍🎓 Core Modules
+- Students Management
+- Teachers Management
+- Classes & Sections
+- Subjects
+- Attendance
+- Exams & Results
+- Assignments
+- Announcements
+- Events & Calendar
 
-**Frontend:** Next.js, React, Tailwind CSS
+### 📊 Dashboard Insights
+- Attendance analytics
+- Financial overview
+- Performance charts
+- Dynamic UI
 
-**Backend:** Node.js, Express, GraphQL
+### 🧰 Tech Support
+- Next.js Server Actions CRUD
+- Prisma ORM + PostgreSQL
+- Cloudinary for media uploads
+- Recharts for analytics
+- FullCalendar integration
+- Zod + React Hook Form validation
+- Toast notifications
+- Pagination & search
 
-**Database:** PostgreSQL
+---
 
-**Authentication:** JWT, OAuth
+## 🏗️ Tech Stack
 
-**Deployment:** Docker
+| Layer | Technology |
+|-------|------------|
+| Frontend | Next.js 14, React, TypeScript |
+| Styling | Tailwind CSS |
+| Auth | Clerk |
+| Database | PostgreSQL |
+| ORM | Prisma |
+| Forms | React Hook Form + Zod |
+| Charts | Recharts |
+| Calendar | FullCalendar |
+| Uploads | Cloudinary |
+| Notifications | React Toastify |
 
+---
 
-
-## 📥Getting Started
-
-Follow these steps to set up the project locally:
-
-*Clone the Repository:*
-```bash
-git clone https://github.com/krishnasingh-09/school-management-dashboard.git
-cd school-management-dashboard
-
+## 📂 Project Structure
 ```
-*Install Dependencies:*
-```bash
+src/
+├── app/ # Next.js routes
+├── components/
+│ ├── forms/
+│ ├── charts/
+│ └── calendar/
+├── lib/
+│ ├── actions.ts
+│ ├── prisma.ts
+│ ├── settings.ts
+│ └── validation/
+├── middleware.ts
+└── prisma/
+├── schema.prisma
+└── seed.ts
+```
+
+---
+
+## ⚙️ Environment Variables
+
+Create a `.env` file in root:
+
+```env
+DATABASE_URL=postgresql://USER:PASSWORD@HOST:PORT/DB_NAME
+
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+CLERK_SECRET_KEY=
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+
+CLOUDINARY_CLOUD_NAME=
+CLOUDINARY_API_KEY=
+CLOUDINARY_API_SECRET=
+```
+## ▶️ Installation & Setup
+### 1️⃣ Clone Repo
+```
+git clone https://github.com/your-username/school-dashboard.git
+cd school-dashboard
+```
+### 2️⃣ Install Dependencies
+```
 npm install
-or
-yarn install
-
 ```
-    
-## 🎯Start the development server:
-```bash
+### 3️⃣ Setup Prisma
+```
+npx prisma generate
+npx prisma migrate dev
+```
+#### Optional seed:
+```
+npx prisma db seed
+```
+### 4️⃣ Run
+```
 npm run dev
-or
-yarn dev
-or
-pnpm dev
-or
-bun dev
-
 ```
-## 👏Acknowledgements
+#### Visit:
+```
+http://localhost:3000
+```
+## 🔐 Role-Based Access
+Managed through:
+- Clerk session
+- Middleware validation
+- ```routeAccessMap``` in ```src/lib/settings.ts```
+- Unauthorized users are redirected
 
- - 💻[Developed by Krishnasingh-09](https://github.com/krishnasingh-09)
-
+## 🖼️ Media Uploads
+Uses Cloudinary for:
+- Profile Images
+- Media storage
+- CDN optimized delivery
+  
+## 🛡️ Security
+RBAC protected
+- Validation on client + server
+- Prisma to prevent injection
+- Secure env variables
+- Safe upload handling
+## 🤝 Contributing
+- PRs welcome 🎉
